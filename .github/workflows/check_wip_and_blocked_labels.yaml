@@ -1,0 +1,18 @@
+name: Check PR for WIP and Blocked labels
+on:
+  pull_request:
+    types: [labeled, unlabeled]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@0.4.0
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const is_blocked_label = (label) => label.name.startsWith('Blocked') || label.name == 'Work In Progress';
+            if (context.payload.pull_request.labels.some(is_blocked_label)) {
+                throw 'PR has a Blocked/WIP label. DO NOT MERGE.';
+            }
+            console.log('No Blocked/WIP labels.');
