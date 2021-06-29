@@ -15,21 +15,13 @@ jobs:
       - name: Get release information
         run: |
           echo 'Getting release information...'
-      - name: Output to markdown
-        env:
-          TAG_NAME: ${{ needs.get_release_information.outputs.tag_name }}
-          RELEASE_VERSION: ${{ needs.get_release_information.outputs.release_version }}
+      - name: Show release information
         run: |
-          echo 'Release information:' > output.md
-          echo "- Tag name: $TAG_NAME" > output.md
-          echo "- Release version: $RELEASE_VERSION" > output.md
-      - name: Upload release information
-        uses: actions/upload-artifact@v2
-        with:
-          name: Release information.md
-          path: output.md
+          echo 'Release information:'
+          echo "- Tag name: $TAG_NAME"
+          echo "- Release version: $RELEASE_VERSION"
 
-  Release_information:
+  show_release_information:
     needs: get_release_information
     runs-on: ubuntu-latest
     strategy:
@@ -37,13 +29,32 @@ jobs:
         include:
           - name: 'Tag name: ${{ needs.get_release_information.outputs.tag_name }}'
           - name: 'Release version: ${{ needs.get_release_information.outputs.release_version }}'
-    name: ${{ matrix.name }}
+    name: 'Please verify release information below:'
+    steps:
+      - name: Placeholder
+        run: echo Placeholder
+
+  show_release_information_tag_name:
+    needs: get_release_information
+    runs-on: ubuntu-latest
+    name: 'Tag name: ${{ needs.get_release_information.outputs.tag_name }}'
+    steps:
+      - name: Placeholder
+        run: echo Placeholder
+
+  show_release_information_release_version:
+    needs: get_release_information
+    runs-on: ubuntu-latest
+    name: 'Release version: ${{ needs.get_release_information.outputs.release_version }}'
     steps:
       - name: Placeholder
         run: echo Placeholder
 
   release_to_pypi:
-    needs: Release_information
+    needs:
+      - show_release_information
+      - show_release_information_tag_name
+      - show_release_information_release_version
     environment: Release env
     runs-on: ubuntu-latest
     steps:
