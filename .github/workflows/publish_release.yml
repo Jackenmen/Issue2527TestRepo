@@ -24,11 +24,6 @@ jobs:
   show_release_information:
     needs: get_release_information
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        include:
-          - name: 'Tag name: ${{ needs.get_release_information.outputs.tag_name }}'
-          - name: 'Release version: ${{ needs.get_release_information.outputs.release_version }}'
     name: 'Please verify release information below:'
     steps:
       - name: Placeholder
