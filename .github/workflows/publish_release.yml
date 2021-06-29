@@ -5,8 +5,9 @@ on:
       - "*"
 
 jobs:
-  get_release_information:
+  release_information:
     if: github.repository == 'jack1142/Issue2527TestRepo'
+    name: 'GO HERE BEFORE APPROVING'
     outputs:
       tag_name: 1.2.3
       release_version: 1.2.3
@@ -15,41 +16,19 @@ jobs:
       - name: Get release information
         run: |
           echo 'Getting release information...'
-      - name: Show release information
+      - name: REVIEW OUTPUT OF THIS STEP BEFORE APPROVING
+        env:
+          TAG_BASE_BRANCH: ${{ context.payload.base_ref }}
+          TAG_NAME: ${{ needs.get_release_information.outputs.tag_name }}
+          RELEASE_VERSION: '1.2.3'
         run: |
           echo 'Release information:'
-          echo "- Tag name: $TAG_NAME"
+          echo "- Branch the tag was based off: $TAG_BASE_BRANCH"
+          echo "- Tag name: ${TAG_NAME#'refs/tags/'}"
           echo "- Release version: $RELEASE_VERSION"
 
-  show_release_information:
-    needs: get_release_information
-    runs-on: ubuntu-latest
-    name: 'Please verify release information below:'
-    steps:
-      - name: Placeholder
-        run: echo Placeholder
-
-  show_release_information_tag_name:
-    needs: get_release_information
-    runs-on: ubuntu-latest
-    name: 'Tag name: ${{ needs.get_release_information.outputs.tag_name }}'
-    steps:
-      - name: Placeholder
-        run: echo Placeholder
-
-  show_release_information_release_version:
-    needs: get_release_information
-    runs-on: ubuntu-latest
-    name: 'Release version: ${{ needs.get_release_information.outputs.release_version }}'
-    steps:
-      - name: Placeholder
-        run: echo Placeholder
-
   release_to_pypi:
-    needs:
-      - show_release_information
-      - show_release_information_tag_name
-      - show_release_information_release_version
+    needs: release_information
     environment: Release env
     runs-on: ubuntu-latest
     steps:
