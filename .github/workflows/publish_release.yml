@@ -6,6 +6,7 @@ on:
 
 jobs:
   release_to_pypi:
+    environment: Release env
     if: github.repository == 'jack1142/Issue2527TestRepo'
     runs-on: ubuntu-latest
     steps:
