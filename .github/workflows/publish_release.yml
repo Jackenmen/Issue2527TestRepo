@@ -19,7 +19,7 @@ jobs:
       - name: REVIEW OUTPUT OF THIS STEP BEFORE APPROVING
         env:
           TAG_BASE_BRANCH: ${{ github.event.base_ref }}
-          TAG_NAME: ${{ needs.get_release_information.outputs.tag_name }}
+          TAG_NAME: ${{ github.ref }}
           RELEASE_VERSION: '1.2.3'
         run: |
           echo 'Release information:'
