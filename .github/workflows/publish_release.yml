@@ -1,12 +1,45 @@
 name: Publish Release
 on:
-  release:
-    types: [created]
+  push:
+    tags:
+      - "*"
 
 jobs:
-  release_to_pypi:
-    environment: Release env
+  get_release_information:
     if: github.repository == 'jack1142/Issue2527TestRepo'
+    outputs:
+      tag_name: 1.2.3
+      release_version: 1.2.3
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get release information
+        run: |
+          echo 'Getting release information...'
+      - name: Output to markdown
+        env:
+          TAG_NAME: ${{ needs.get_release_information.outputs.tag_name }}
+          RELEASE_VERSION: ${{ needs.get_release_information.outputs.release_version }}
+        run: |
+          echo 'Release information:' > output.md
+          echo "- Tag name: $TAG_NAME" > output.md
+          echo "- Release version: $RELEASE_VERSION" > output.md
+      - name: Upload release information
+        uses: actions/upload-artifact@v2
+        with:
+          name: Release information.md
+          path: output.md
+
+  show_release_information:
+    needs: get_release_information
+    runs-on: ubuntu-latest
+    name: |
+      Release information:
+      - Tag name: ${{ needs.get_release_information.outputs.tag_name }}
+      - Release version: ${{ needs.get_release_information.outputs.release_version }}
+
+  release_to_pypi:
+    needs: show_release_information
+    environment: Release env
     runs-on: ubuntu-latest
     steps:
       - name: View context attributes
