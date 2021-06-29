@@ -29,18 +29,21 @@ jobs:
           name: Release information.md
           path: output.md
 
-  show_release_information:
+  Release information:
     needs: get_release_information
     runs-on: ubuntu-latest
-    name: |
-      Release information:
-      - Tag name: ${{ needs.get_release_information.outputs.tag_name }}
-      - Release version: ${{ needs.get_release_information.outputs.release_version }}
+    strategy:
+      matrix:
+        include:
+          - name: 'Tag name: ${{ needs.get_release_information.outputs.tag_name }}'
+          - name: 'Release version: ${{ needs.get_release_information.outputs.release_version }}'
+    name: ${{ matrix.name }}
     steps:
-      - run: echo "Verify the release information before approving release"
+      - name: Placeholder
+        run: echo Placeholder
 
   release_to_pypi:
-    needs: show_release_information
+    needs: Release information
     environment: Release env
     runs-on: ubuntu-latest
     steps:
