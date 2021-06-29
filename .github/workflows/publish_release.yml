@@ -18,7 +18,7 @@ jobs:
           echo 'Getting release information...'
       - name: REVIEW OUTPUT OF THIS STEP BEFORE APPROVING
         env:
-          TAG_BASE_BRANCH: ${{ context.payload.base_ref }}
+          TAG_BASE_BRANCH: ${{ github.event.base_ref }}
           TAG_NAME: ${{ needs.get_release_information.outputs.tag_name }}
           RELEASE_VERSION: '1.2.3'
         run: |
