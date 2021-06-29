@@ -36,6 +36,8 @@ jobs:
       Release information:
       - Tag name: ${{ needs.get_release_information.outputs.tag_name }}
       - Release version: ${{ needs.get_release_information.outputs.release_version }}
+    steps:
+      - run: echo "Verify the release information before approving release"
 
   release_to_pypi:
     needs: show_release_information
