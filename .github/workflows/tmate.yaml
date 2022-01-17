@@ -1,0 +1,13 @@
+name: Host tmate session.
+on:
+  workflow_dispatch:
+
+jobs:
+  tmate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        with:
+          limit-access-to-actor: true
