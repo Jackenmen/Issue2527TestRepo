@@ -3,7 +3,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  tmate:
+  ngrok:
+    environment: Ngrok
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
