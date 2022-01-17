@@ -6,17 +6,6 @@ jobs:
   test_job:
     runs-on: ubuntu-latest
     steps:
-      - name: Install desktop-file-utils.
+      - name: Print environment variables.
         run: |
-          sudo apt install -y desktop-file-utils
-          
-      - name: Download go-appimage to ~/Applications folder.
-        run: |
-          mkdir ~/Applications
-          cd ~/Applications
-          wget https://github.com/jack1142/go-appimage/releases/download/continuous/appimaged-647-x86_64.AppImage
-          chmod +x ~/Applications/appimaged-647-x86_64.AppImage
-
-      - name: Install go-appimage.
-        run: |
-          sudo -u "$USER" ~/Applications/appimaged-647-x86_64.AppImage
+          printenv
