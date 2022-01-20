@@ -4,7 +4,7 @@ on:
     inputs:
       runs-on:
         description: 'OS to run on.'
-        required: true
+        type: choice
         options:
           - windows-2022
           - windows-latest
