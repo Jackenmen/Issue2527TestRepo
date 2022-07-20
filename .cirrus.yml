@@ -1,5 +1,4 @@
-macos_instance:
-  image: ghcr.io/cirruslabs/macos-monterey-base:latest
-
-task:
-  script: exit 1
+example_task:
+  container:
+    image: ubuntu:latest
+  script: echo "${CUSTOM_VAR:-default value}"
