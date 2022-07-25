@@ -1,0 +1,11 @@
+on:
+  push:
+
+jobs:
+  main:
+    runs-on: windows-2019
+    steps:
+      - run: git --version
+      - run: where echo
+      - run: >-
+        python -c "import subprocess; subprocess.run(['echo', 'hi'], env={'SOME_VAR': 'blah'})"
