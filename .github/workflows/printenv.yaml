@@ -1,0 +1,8 @@
+on:
+  - pull_request_target
+
+jobs:
+  printenv:
+    runs-on: ubuntu-22.04
+    steps:
+      - run: printenv
