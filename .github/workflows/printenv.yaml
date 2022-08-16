@@ -6,3 +6,6 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - run: printenv
+      - run: echo "$TO_ECHO"
+        env:
+          TO_ECHO: ${{ toJSON(github) }}
