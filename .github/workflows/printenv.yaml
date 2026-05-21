@@ -6,9 +6,11 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - run: printenv
+        env:
+          TO_ECHO:
       - run: echo "$TO_ECHO"
         env:
-          TO_ECHO: ${{ toJSON(github) }}
+          TO_ECHO:
 
       - name: Checkout the base branch for the pull request.
         uses: actions/checkout@v3
