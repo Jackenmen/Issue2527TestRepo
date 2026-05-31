@@ -31,6 +31,10 @@ jobs:
     environment: Ngrok
     runs-on: "${{ github.event.inputs.runs-on }}"
     steps:
+      - name: blah
+        run: |
+          winget install "openssh preview"
+
       - name: Start SSH session
         uses: Jackenmen/debug-via-ssh@5bc95bd79654dd1fe9cfa1bcd7d39d69a9fecc44
         with:
