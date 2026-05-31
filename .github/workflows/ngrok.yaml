@@ -1,4 +1,5 @@
 name: Host SSH session.
+run-name: "Host SSH session (${{ github.event.inputs.runs-on }})"
 on:
   workflow_dispatch:
     inputs:
