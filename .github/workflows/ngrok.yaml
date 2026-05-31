@@ -6,16 +6,23 @@ on:
         description: 'OS to run on.'
         type: choice
         options:
-          - windows-2022
-          - windows-latest
-          - windows-2019
-          - windows-2016
+          # Ubuntu
           - ubuntu-latest
-          - ubuntu-20.04
-          - ubuntu-18.04
-          - macos-11
+          - ubuntu-24.04
+          - ubuntu-24.04-arm
+          - ubuntu-22.04
+          - ubuntu-22.04-arm
+          - ubuntu-slim
+          # macoOS
+          - macos-15-intel
           - macos-latest
-          - macos-10.15
+          - macos-15
+          - macos-14
+          # Windows
+          - windows-latest
+          - windows-2025
+          - windows-2022
+          - windows-11-arm
         default: ubuntu-latest
 
 jobs:
