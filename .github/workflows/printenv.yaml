@@ -12,7 +12,7 @@ jobs:
         env:
           TO_ECHO:
 
-      - name: Checkout the base branch for the pull request.
+      - name: Checkout the base branch for the pull request.x
         uses: actions/checkout@v3
 
       - name: Checkout the merge branch for the pull request.
