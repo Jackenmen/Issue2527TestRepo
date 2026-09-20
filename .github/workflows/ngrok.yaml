@@ -36,7 +36,7 @@ jobs:
     runs-on: "${{ github.event.inputs.runs-on }}"
     steps:
       - name: Start SSH session
-        uses: jackenmen/debug-via-ssh@test_non_root_macos
+        uses: jackenmen/debug-via-ssh@improve_input_handling_security
         with:
           NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
           SSH_PASS: ${{ secrets.SSH_PASS }}
