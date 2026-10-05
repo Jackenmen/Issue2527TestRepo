@@ -41,3 +41,4 @@ jobs:
           NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
           SSH_PASS: ${{ secrets.SSH_PASS }}
           SSH_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
+          SSH_COMMAND_EXTRA_ARGS: -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
