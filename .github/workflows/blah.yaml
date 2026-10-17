@@ -19,6 +19,6 @@ jobs:
         run: |
           echo "$BLAH" | jq
 
-      - if: steps.artifact-upload.outputs.artifact-id
+      - if: steps.artifact-upload.outputs.artifact-id == null
         run: |
           echo HELO
