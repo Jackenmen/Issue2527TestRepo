@@ -16,3 +16,7 @@ jobs:
           BLAH: ${{ toJson(steps.artifact-upload) }}
         run: |
           echo "$BLAH" | jq
+
+      - if: !steps.artifact-upload.outputs
+        run: |
+          echo HELO
