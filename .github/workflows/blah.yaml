@@ -5,10 +5,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - run: touch file-to-upload
+
       - id: artifact-upload
         uses: actions/upload-artifact@v7
         with:
-          path: blahsdhfdsf
+          path: file-to-upload
           archive: false
           if-no-files-found: ignore
 
