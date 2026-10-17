@@ -1,0 +1,18 @@
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: artifact-upload
+        uses: actions/upload-artifact@v7
+        with:
+          path: blahsdhfdsf
+          archive: false
+          if-no-files-found: ignore
+
+      - env:
+          BLAH: ${{ toJson(steps.artifact-upload) }}
+        run: |
+          echo "$BLAH" | jq
