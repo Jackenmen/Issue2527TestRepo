@@ -1,0 +1,15 @@
+name: Workflow example
+on: [push]
+concurrency:
+    group: ${{ github.run_id }}
+
+permissions: {}
+
+jobs:
+  job-example:
+    name: Job example
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step example
+        run: |
+            echo 'some text with $\{{ in it'
