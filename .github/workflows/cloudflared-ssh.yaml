@@ -35,3 +35,5 @@ jobs:
     runs-on: "${{ github.event.inputs.runs-on }}"
     steps:
       - uses: valeriangalliat/action-sshd-cloudflared@f231ff81b1a41b9dc7c3aab65e4a1b08d952f068
+        env:
+          AUTHORIZED_KEYS: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCF+ipBdwc+0QHuPBCNczGebE+ZetszUl2qb6C9PT2EuFpXDkzu5DIUEUxjo6HorXaYWXNiWJUFyBABHF8Mf6tT6jkWjIxOnsHV8vbXPdK4/88L/8gVwrmOwt4dem6JA26l3edtVG7kl7dTIep+db9I/RCkMDC4XY/entv3BTnj7otDCYuI0B4TtlqJwzyGt8taMZyNFp5DRWrVVwLqqcqGcaxR/ukH23E7Iqo6i1XQNbrvyBHrqn+i4Hl8Dyr5g17MTwsMJOoOM/zWGApfAF4UN0VTuZeqKI/uuyeEOQYLCq7zSgqnAMLQGH60fIAC5JroN0vlHfVzxV9s106s1l+5 ubuntu
