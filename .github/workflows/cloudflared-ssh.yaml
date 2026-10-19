@@ -31,7 +31,7 @@ on:
         default: ubuntu-latest
 
 jobs:
-  ngrok:
+  cloudflared-ssh:
     runs-on: "${{ github.event.inputs.runs-on }}"
     steps:
       - uses: valeriangalliat/action-sshd-cloudflared@f231ff81b1a41b9dc7c3aab65e4a1b08d952f068
