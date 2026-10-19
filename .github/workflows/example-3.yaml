@@ -12,4 +12,4 @@ jobs:
     steps:
       - name: Step example
         run: |
-            echo 'some text with $\{{ in it'
+            echo 'some text with ${\{ in it'
